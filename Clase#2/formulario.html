@@ -14,6 +14,19 @@
             <el-form-item label="Nombre">
                 <el-input v-model="formLabelAlign.name"></el-input>
             </el-form-item>
+            <span>{{ formLabelAlign.name }}</span>
+            <el-form-item label="Sexo" prop="resource">
+                <el-radio-group v-model="ruleForm.resource">
+                    <el-radio label="F"></el-radio>
+                    <el-radio label="M"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="Materias">
+                <el-select v-model="formLabelAlign.region" placeholder="Selecciona tu materia">
+                    <el-option label="Sistema" value="Sistema"></el-option>
+                    <el-option label="Medicina" value="Medicina"></el-option>
+                </el-select>
+            </el-form-item>
         </el-form>
     </div>
 </body>
@@ -27,10 +40,15 @@
             return {
                 labelPosition: 'right',
                 formLabelAlign: {
-                    name: ''
+                    name: '',
+                    region: ''
+                },
+                ruleForm: {
+                    resource: ''
                 }
             };
         }
+
     }
     var Ctor = Vue.extend(Main)
     new Ctor().$mount('#app')
