@@ -13,10 +13,10 @@ Al principio que hicimos nuestro diagrama de flujo con [Wireflow](http://wireflo
 [Optudy](https://expo.io/@abadia962/optudycrime)
 
 #### Antes
-![]()
+![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/antes.jpeg?raw=true)
 #### Despues
-![]()
+![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/despues.jpeg?raw=true)
 
  # Resultado
- ![]()
+ ![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/app.gif)
  ![]()
