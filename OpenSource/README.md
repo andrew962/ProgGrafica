@@ -11,6 +11,7 @@ Al principio que hicimos nuestro diagrama de flujo con [Wireflow](http://wireflo
 
 # App
 ![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/optudy.png?raw=true)
+
 [Optudy](https://expo.io/@abadia962/optudycrime)
 
 #### Antes
