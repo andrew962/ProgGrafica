@@ -22,11 +22,8 @@ Con el [Taller#3](https://github.com/andrew962/ProgGrafica/tree/master/Talleres/
 #### Se aprendio
 > [Componentes](https://vuejs.org/v2/api/#components)
 
-![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller3.png?raw=true)
-![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller3_%25.png?raw=true)
-![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller3_3.png?raw=true)
-![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller3_6.png?raw=true)
-![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller3_2.png?raw=true)
+![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller3.gif?raw=true)
+
 
 # Taller#4
 
@@ -34,5 +31,4 @@ El [Taller#4](https://github.com/andrew962/ProgGrafica/tree/master/Talleres/Tall
 #### Se aprendio
  > [Firebase](https://firebase.google.com/)
 
-![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller4.png?raw=true)
-![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller4_2.png?raw=true)
+![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller4.gif?raw=true)
