@@ -5,9 +5,8 @@ Bien en el [taller#1](https://github.com/andrew962/ProgGrafica/tree/master/Talle
 #### Se aprendio
 > [Element ui](https://element.eleme.io/#/es/component/table)
 
-![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller1.png?raw=true)
-![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller1_2.png?raw=true)
-![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller1_3.png?raw=true)
+![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/Taller1.png?raw=true)
+
 
 
 # Taller#2
@@ -15,8 +14,7 @@ En el [Taller#2](https://github.com/andrew962/ProgGrafica/tree/master/Talleres/T
 #### Se aprendio
 > [Element ui](https://element.eleme.io/#/es/component/table)
 
-![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller2.png?raw=true)
-![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller2_!.png?raw=true)
+![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/taller2.gif?raw=true)
 
 # Taller#3
 
