@@ -21,12 +21,7 @@
 import Firebase,{ functions } from 'firebase'
 
 let config = {
-    apiKey: "AIzaSyAzu9ky-NCh-_YCmDeH4cFjEBZxN_PiTo8",
-    authDomain: "taller4-d6d44.firebaseapp.com",
-    databaseURL: "https://taller4-d6d44.firebaseio.com",
-    projectId: "taller4-d6d44",
-    storageBucket: "taller4-d6d44.appspot.com",
-    messagingSenderId: "635266986809"
+
 };
 let app = Firebase.initializeApp(config);
 let db = app.database();
