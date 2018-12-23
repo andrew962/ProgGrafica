@@ -1,4 +1,4 @@
-#Informe
+# Informe
 
 #### Proyecto
 El proyecto estaba enfocado en hacer una aplicacion o pagina web en donde pudieramos visualizar distintos proyectos OpenSouce y que fuera amigable para el que la estaba usando y a la vez que le ayudara a encontrar lo que estaba buscando.
