@@ -10,6 +10,7 @@ El proyecto estaba enfocado en hacer una aplicacion o pagina web en donde pudier
 Al principio que hicimos nuestro diagrama de flujo con [Wireflow](http://wireflow.co/) y teniamos la idea de como hacerlo guiandonos con la imagen, cuando revisamos las platillas que nos afrecia [NativeBase-KitchenSink](https://github.com/GeekyAnts/KitchenSink-Vue-Native) decidimos hacer algunos cambios para que nuestro diagrama fuera lo mas parecido a nuestra App, podemos decir que lo hicimos lo mas parecido al driagrama.
 
 # App
+![]()
 [Optudy](https://expo.io/@abadia962/optudycrime)
 
 #### Antes
@@ -19,4 +20,9 @@ Al principio que hicimos nuestro diagrama de flujo con [Wireflow](http://wireflo
 
  # Resultado
  ![](https://github.com/andrew962/ProgGrafica/blob/master/Imagenes/app.gif)
+
+ # Codigo
+ ![]()
+ ![]()
+ ![]()
  ![]()
