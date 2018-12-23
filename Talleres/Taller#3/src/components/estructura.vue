@@ -6,7 +6,7 @@
                 </el-header>
                 <el-main height="">
                     <formulario/>
-                    <lista/>
+                    <!--lista/-->
                 </el-main>
             </el-container>
         </el-container>

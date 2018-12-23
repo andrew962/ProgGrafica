@@ -12,7 +12,7 @@
           <label for="">Nombre</label>
           <input type="text" placeholder="Nombre" v-model="newUser.usuario" id="" class="form-control">
           <br>
-          <input type="text" placeholder="Apellido" v-model="newUser.password" class="form-control">
+          <input type="text" placeholder="Apellido" v-model="newUser.apellido" class="form-control">
           <br>
           <input type="submit" class="btn btn-info" value="Agregar">
         </form>
@@ -20,22 +20,21 @@
       <hr>
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">Usuario y Password</h2>
+          <h2 class="card-title">Usuario y apellido</h2>
         </div>
         <div v-for="item in usuarios" :key="item.id">
         </div>
         <div class="card-body">
           <table class="table table-striped">
-            
             <thead>
               <th>Nombre</th>
-              <th>Password</th>
+              <th>apellido</th>
               <th>Eliminar</th>
             </thead>
             <tbody>
               <tr v-for="(item, index) in usuarios" :key="index">
                 <td>{{ item.usuario }}</td>
-                <td>{{ item.password }}</td>
+                <td>{{ item.apellido }}</td>
                 <td>
                   <!-- deleteNom(item) aqui por referencia le estamos pasando un item para que el pueda solamente escger
                   uno solo salcandole el .key -->
@@ -59,12 +58,7 @@ import Firebase,{ functions } from 'firebase'
 //Trayendo la configuracion de firebase en config
 //Inicializando la DB
 let config = {
-    apiKey: "",
-    authDomain: "",
-    databaseURL: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: ""
+
 }
 
 //Utilizando firebase y haciendo connecion con la DB
@@ -93,13 +87,13 @@ export default {
       //Hacemos referencia a la base de datos con la coleccion que creamos arriba
       // .push() es para insertar un dato dentro de la coleccion
       refNom.push(this.newUser)
-      //this.newUser.usuario = ''
-      //this.newUser.password = ''
+      this.newUser.usuario = ''
+      this.newUser.apellido = ''
     },
     deleteNom:function(item){
       console.log(item);
       //aqui le estamos pasando unicamente un solo valor de la base de datos
-      refDatos.child(item['.key']).remove();
+      refNom.child(item['.key']).remove();
       
     }
   },
@@ -108,7 +102,7 @@ export default {
       //objeto para ver en donde se guardaran los datos
       newUser:{
         usuario:'',
-        password:''
+        apellido:''
       }
     }
   }

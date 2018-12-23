@@ -10,7 +10,7 @@ Bien en el [taller#1](https://github.com/andrew962/ProgGrafica/tree/master/Talle
 
 
 # Taller#2
-En el [Taller#2](https://github.com/andrew962/ProgGrafica/tree/master/Talleres/Taller%232) seguiamos practicando haciendo formularios para acostumbrarnos al [Element ui](https://element.eleme.io/#/es), la idea era hacer un formulario para ingresar productos, seguimos utilizando la CDN de [Element ui](https://element.eleme.io/#/es) y el fraemwork de [Vue.js](https://vuejs.org/), y se aprendio ya que son cosas nuevas que vemos.
+En el [Taller#2](https://github.com/andrew962/ProgGrafica/tree/master/Talleres/Taller%232) seguiamos practicando haciendo formularios para acostumbrarnos al [Element ui](https://element.eleme.io/#/es), la idea era hacer un formulario para ingresar cuentas, seguimos utilizando la CDN de [Element ui](https://element.eleme.io/#/es) y el fraemwork de [Vue.js](https://vuejs.org/), y se aprendio ya que son cosas nuevas que vemos.
 #### Se aprendio
 > [Element ui](https://element.eleme.io/#/es/component/table)
 

@@ -31,7 +31,44 @@
          <el-button type="success" @click="guardar(table)" v-if="validar">Guardar</el-button>
       </el-card>
       <br>
-      <el-button type="primary" icon="el-icon-edit-outline">Clientes</el-button>
+      <el-button type="primary" @click="visualizar = true" icon="el-icon-edit-outline">Clientes</el-button>
+      <br>
+      <br>
+        <el-card class="box-card" v-show="visualizar">
+        <div slot="header" class="clearfix">
+            <h1>Listado</h1>
+        </div>
+        <el-table :data="table">
+            <el-table-column prop="nombre"
+        label="Nombre"
+        width="180">
+            </el-table-column>
+            <el-table-column prop="apellido"
+        label="Apellido"
+        width="180">
+            </el-table-column>
+            <el-table-column prop="cuidad"
+        label="Cuidad"
+        width="180">
+            </el-table-column>
+            <el-table-column prop="sexo"
+        label="Sexo"
+        width="180">
+            </el-table-column>
+            <el-table-column prop="tiempo"
+        label="Fecha Nac."
+        width="180">
+            </el-table-column>
+            <el-table-column prop="status"
+        label="Estado"
+        width="180">
+            </el-table-column>
+            <el-table-column prop="direccion"
+        label="Direccion"
+        width="180">
+            </el-table-column>
+        </el-table>
+        </el-card>
    </div>
 </template>
 <script>
@@ -80,7 +117,8 @@ import lista from './lista.vue'
                        cuidad: '',
                        sexo: '',
                        status: '',
-                       direccion: ''
+                       direccion: '',
+                       tiempo:''
                    }]
            }
        },
@@ -94,16 +132,7 @@ import lista from './lista.vue'
                        status: this.status ? 'Activo' : 'Inactivo',
                        direccion: this.direccion,
                        tiempo: this.tiempo
-                   }),
-                   console.log('estoy en formulario  '+datos)
-                   this.$emit('formulario_datos',datos)
-                   this.nombre = '',
-                       this.apellido = '',
-                       this.value = '',
-                       this.sexo = '',
-                       this.status = true,
-                       this.direccion = '',
-                       this.tiempo=''
+                   })
                }
    },computed: {
                validar: function() {
