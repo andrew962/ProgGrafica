@@ -1,0 +1,30 @@
+<template>
+  <div id="app">
+    <img src="./assets/logo.png">
+    <br>
+    <br>
+    <!-- despues del router-link dos formas de colocarle clase a los botones -->
+    <router-link tag="button"  to="/" class="btn btn-primary">Home</router-link>
+    <router-link to="/cell"><button class="btn btn-success">Cell</button></router-link>
+    <router-link to="/prueba" tag="button" class="btn btn-danger">Prueba</router-link>
+    <router-view/>
+  </div>
+</template>
+
+<script>
+/* eslint-disable */
+export default {
+  name: 'App'
+}
+</script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>

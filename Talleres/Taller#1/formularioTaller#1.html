@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<!--Hecho por Andres Abadia-->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <el-header>
+            <h1>Taller #1</h1>
+        </el-header>
+        <div style="margin: 20px;"></div>
+        <el-form :label-position="labelPosition" label-width="100px" :model="formLabelAlign">
+            <el-form-item label="Nombre"><i class="el-icon-edit"></i>
+                <el-input v-model="out.name"></el-input>
+            </el-form-item>
+            <el-form-item label="Sexo" prop="sexo">
+                <el-radio-group v-model="out.sexo">
+                    <el-radio label="F"></el-radio>
+                    <el-radio label="M"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+            <el-form-item label="Materias"><i class="el-icon-tickets"></i>
+                <el-select v-model="out.materia" placeholder="Selecciona tu materia">
+                    <el-option label="Sistema" value="Sistema"></el-option>
+                    <el-option label="Medicina" value="Medicina"></el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="Teléfono"><i class="el-icon-phone"></i>
+                <el-input v-model="out.telefono"></el-input>
+            </el-form-item>
+            <el-checkbox v-model="checked">Terminos y condiciones.</el-checkbox>
+        </el-form>
+        <p><span>{{ out.name }}</span></p>
+        <p><span>{{ out.materia }}</span></p>
+        <p><span>{{ out.sexo }}</span></p>
+        <p><span>{{ out.telefono }}</span></p>
+    </div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    var Main = {
+        data() {
+            return {
+                labelPosition: 'right',
+                out: {
+                    name: '',
+                    materia: '',
+                    telefono: '',
+                    sexo: ''
+                }
+            };
+        }
+
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
+</script>
+
+</html>

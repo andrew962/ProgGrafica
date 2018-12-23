@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <el-container>
+            <el-main height="">
+                <!-- Dentro de un main para una separacion de bordes pareja y visualmente agradable-->
+                <template>
+                        <!--Template principal donde estan las opciones de cliente o proovedor-->
+                            <el-tabs v-model="activeName"
+                                type="border-card" @tab-click="handleClick">
+                                <!--Seccion cliente-->
+                                <el-tab-pane label="Cliente" name="first">
+                                    <template>
+                                    <!--Template secundiario que estaria dentro de cliente donde escogeriamos si introducir
+                                        un cliente o visualizar un cliente.-->
+                                        <el-tabs :tab-position="tabPosition" style="height:100%;">
+                                            <!--Seccion para visualizar los clientes ingresados-->
+                                            <el-tab-pane label="Clientes" name="first">
+                                                <el-container>
+                                                    <el-container>
+                                                        <el-main height="">
+                                                            <!-- Tabla donde se muestran los clientes ingresados -->
+                                                            <el-table :data="tableCli">
+                                                                    <el-table-column prop="nombre" label="Nombre">
+                                                                    </el-table-column>
+                                                                    <el-table-column prop="apellido" label="Apellido" >
+                                                                    </el-table-column>
+                                                                    <el-table-column prop="cuidad" label="Ciudad" >
+                                                                    </el-table-column>
+                                                                    <el-table-column prop="sexo" label="Sexo" >
+                                                                    </el-table-column>
+                                                                    <el-table-column prop="status" label="Estado" >
+                                                                    </el-table-column>
+                                                                    <el-table-column prop="direccion" label="Direccion" >
+                                                                    </el-table-column>
+                                                                    <el-table-column
+                                                                        prop="deudaClit"
+                                                                        label="Deuda">
+                                                                        
+                                                                    </el-table-column>
+                                                                    
+                                                                    <el-table-column fixed="right" label="Operaciones">
+                                                                            <template slot-scope="scope">
+                                                                                    <el-button @click.native.prevent="borrarCli(scope,tableCli)"
+                                                                                    type="danger">Eliminar</el-button>
+                                                                            </template>
+                </el-table-column>
+                </el-table>
+            </el-main>
+        </el-container>
+        </el-container>
+        </el-tab-pane>
+        <!--Seccion para ingresar clientes-->
+        <el-tab-pane label="Ingresar nuevos clientes" name="second">
+            <!--Todo dentro de un contenedor-->
+            <el-container>
+                <el-main height="">
+                    <!-- Formulario de datos para ingresar nuevo cliente -->
+                    <p>Ingresar nuevo cliente</p>
+                    <p>Nombre</p>
+                    <el-input v-model="nombreCli" placeholder="Nombre"></el-input>
+                    <p>Apellido</p>
+                    <el-input v-model="apellidoCli" placeholder="Apellido"></el-input>
+                    <p>Ciudad</p>
+                    <el-select v-model="value" placeholder="Cuidad">
+                        <el-option v-for="item in ciudades" :key="item.value" :label="item.label" :value="item.value">
+                        </el-option>
+                    </el-select>
+                    <p>Sexo</p>
+                    <el-radio v-model="sexoCli" label="Masculino">Masculino</el-radio>
+                    <el-radio v-model="sexoCli" label="Femenino">Femenino</el-radio>
+                    <p>Estado</p>
+                    <el-switch v-model="statusCli" active-text="Activo" inactive-text="Inactivo" active-color="#13ce66" inactive-color="#ff4949">
+                    </el-switch>
+                    <p>Direccion de entrega</p>
+                    <el-input type="textarea" :rows="2" v-model="direccionCli" placeholder="Ingresar direccion..."></el-input>
+                    <br><br>
+                    <el-button type="success" @click="guardarCli" v-if="validar">Guardar</el-button>
+                </el-main>
+            </el-container>
+            </el-container>
+        </el-tab-pane>
+        </el-tabs>
+        </template>
+        </el-tab-pane>
+
+        <!--Seccion proovedor-->
+        <el-tab-pane label="Proveedor" name="second">
+            <template>
+                                        <!--Menu en posicion izquierda-->
+                                        <el-tabs :tab-position="tabPosition" style="height:100%;">
+                                            <el-tab-pane label="Proveedor">
+                                                <el-container>
+                                                        <el-main height="">
+                                                            <!-- Tabla para ver los proveedores agregados -->
+                                                            <el-table :data="tablePro">
+                                                                    <el-table-column prop="nombre" label="Nombre">
+                                                                    </el-table-column>
+                                                                    <el-table-column prop="fecha" label="Fecha" width="200px">
+                                                                    </el-table-column>
+                                                                    <el-table-column prop="capital" label="Capital">
+                                                                    </el-table-column>
+                                                                    <el-table-column prop="ubicacion" label="Ubicacion">
+                                                                    </el-table-column>
+                                                                    <el-table-column prop="tipoEmpresa" label="Tipo de empresa">
+                                                                    </el-table-column>
+                                                                    <el-table-column prop="producto" label="Producto">
+                                                                    </el-table-column>
+                                                                    <el-table-column fixed="right" label="Operaciones">
+                                                                            <template slot-scope="scope">
+                                                                                    <el-button @click.native.prevent="borrarPro(scope,tablePro)"
+                                                                                    type="danger">Eliminar</el-button>
+                                                                            </template>
+            </el-table-column>
+            </el-table>
+        </el-tab-pane>
+        </el-main>
+        </el-container>
+        <!--Formulario donde se igresaran los nuevos proveedores-->
+        <el-tab-pane label="Ingresar nuevo proveedor">
+            <el-container>
+                <el-main height="">
+                    <!-- Main content -->
+                    <p>Nombre</p>
+                    <el-input v-model="nombrePro" placeholder="Nombre"></el-input>
+                    <p>Fecha de ingreso - Fecha de salida</p>
+                    <el-date-picker v-model="fechaIngPro" type="daterange" range-separator="-" start-placeholder="Fecha ingreso" end-placeholder="Fecha salida" format="yyyy/MM/dd" value-format="yyyy-MM-dd">
+                    </el-date-picker>
+                    <p>Capital</p>
+                    <el-input-number v-model.number="capitalPro" :min="100" label="Capital"></el-input-number>
+                    <p>Tipo de empresa</p>
+                    <el-radio-group v-model="tipoEmprePro">
+                        <el-radio-button label="Privada"></el-radio-button>
+                        <el-radio-button label="Publica"></el-radio-button>
+                    </el-radio-group>
+                    <p>Productos</p>
+                    <el-cascader :options="productos" v-model="producPro">
+                    </el-cascader>
+                    <p>Ubicación</p>
+                    <el-input type="textarea" :rows="2" v-model="ubicacionPro" placeholder="Ubicación..."></el-input>
+                    <br><br>
+                    <el-button type="success" @click="guardarPro" v-if="validarPro">Enviar</el-button>
+                </el-main>
+            </el-container>
+            </el-container>
+        </el-tab-pane>
+        </el-tabs>
+        </template>
+        </el-tab-pane>
+        <el-tab-pane label="Método de pago">
+            <el-card :body-style="{ padding: '20px' }">
+                <div slot="header" class="clearfix">
+                    <span>Metodo de pago</span>
+                </div>
+                <input type="image" width="75" height="50" src="https://logosmarcas.com/wp-content/uploads/2018/03/VISA-logo-600x338.png">
+                <input type="image" width="75" height="50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png">
+                <input type="image" width="75" height="50" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/180px-American_Express_logo_%282018%29.svg.png">
+                <br>
+                <p>Numero de tarjeta</p>
+                <el-input type="number" label="Numero de tarjeta" maxlength="18"></el-input>
+                <p>Nombre de tarjeta</p>
+                <el-input type="text" placeholder="Nombre de tajeta"></el-input>
+                <p>CVC</p>
+                <el-input placeholder="CVC"></el-input>
+                <p>Expira</p>
+                <el-date-picker type="month" placeholder="Expira">
+                </el-date-picker>
+                <p>Pagar a:</p>
+                <el-select v-model="valor" placeholder="Buscar" filterable>
+                    <el-option v-for="item in tableCli" :key="item.key" :label="item.nombre" :value="item.nombre">
+                    </el-option>
+                    <el-option v-for="item in tablePro" :key="item.key" :label="item.nombre" :value="item.nombre">
+                    </el-option>
+                </el-select>
+                <br><br>
+                <el-button type="primary" @click.prevent="pagar">Pagar</el-button>
+            </el-card>
+        </el-tab-pane>
+        </el-tabs>
+        </template>
+        </el-main>
+        </el-container>
+        </el-container>
+    </div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<!--Script para el idioma Español-->
+<script src="https://unpkg.com/element-ui@2.4.8/lib/umd/locale/es.js"></script>
+<script>
+    ELEMENT.locale(ELEMENT.lang.es)
+</script>
+<!--Hasta aqui-->
+<script>
+    //link de las imagenes de tarjetas.
+    //Visa- https://logosmarcas.com/wp-content/uploads/2018/03/VISA-logo-600x338.png
+    //mastercard- https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png
+    //americanexpres -  https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/180px-American_Express_logo_%282018%29.svg.png
+    new Vue({
+        el: '#app',
+        methods: {
+            handleClick(tab, event) {},
+            borrarCli(index) {
+                this.tableCli.splice(index, 1)
+            },
+            borrarPro(index) {
+                this.tablePro.splice(index, 1)
+            },
+            pagar: function() {
+                this.tableCli.push({
+                    deudaClit: 'Pago'
+                })
+            },
+            guardarCli: function() {
+                this.tableCli.push({
+                        nombre: this.nombreCli,
+                        apellido: this.apellidoCli,
+                        cuidad: this.value,
+                        sexo: this.sexoCli,
+                        status: this.statusCli ? 'Activo' : 'Inactivo',
+                        direccion: this.direccionCli,
+                        deudaClit: this.deudaCli
+                    }),
+                    this.nombreCli = '',
+                    this.apellidoCli = '',
+                    this.value = '',
+                    this.sexoCli = '',
+                    this.statusCli = true,
+                    this.direccionCli = ''
+            },
+            guardarPro: function() {
+                this.tablePro.push({
+                        nombre: this.nombrePro,
+                        fecha: this.fechaIngPro,
+                        capital: this.capitalPro,
+                        ubicacion: this.ubicacionPro,
+                        tiempo: this.tiempoEntrePro,
+                        tipoEmpresa: this.tipoEmprePro,
+                        producto: this.producPro
+                    }),
+                    this.nombrePro = '',
+                    this.fechaIngPro = '',
+                    this.capitalPro = '',
+                    this.ubicacionPro = '',
+                    this.tipoEmprePro = '',
+                    this.producPro = []
+            }
+        },
+        data() {
+            return {
+                //tabPosition seria la posicion del menu de agregar o ver
+                tabPosition: 'left',
+                activeName: 'first',
+                activeSecond: 'first',
+                valor: '',
+                visualizarCli: false,
+                ingresarCli: false,
+                visualizarPro: false,
+                ingresarPro: false,
+                //Cliente
+                nombreCli: null,
+                apellidoCli: null,
+                sexoCli: null,
+                statusCli: true,
+                direccionCli: null,
+                value: null,
+                deudaCli: 'No Pago',
+                ciudades: [{
+                    value: 'Arraijan',
+                    label: 'Arraijan'
+                }, {
+                    value: 'Chepo',
+                    label: 'Chepo'
+                }, {
+                    value: 'Gorgona',
+                    label: 'Gorgona'
+                }, {
+                    value: 'San carlos',
+                    label: 'San carlos'
+                }, {
+                    value: 'La palma',
+                    label: 'La palma'
+                }, {
+                    value: 'Capira',
+                    label: 'Capira'
+                }],
+                //Proveedor
+                nombrePro: null,
+                fechaIngPro: null,
+                capitalPro: null,
+                ubicacionPro: null,
+                tiempoEntrePro: null,
+                tipoEmprePro: null,
+                deudaPro: null,
+                producPro: [],
+                //Tabla cliente
+                tableCli: [{
+                    nombre: null,
+                    apellido: null,
+                    cuidad: null,
+                    sexo: null,
+                    status: null,
+                    direccion: null,
+                    deudaClit: null
+                }],
+                //Tabla proovedor
+                tablePro: [{
+                    nombre: null,
+                    fecha: null,
+                    capital: null,
+                    ubicacion: null,
+                    tiempo: null,
+                    tipoEmpresa: null,
+                    producto: null,
+                    deudaProt: null
+                }],
+                fechaIngreso: {
+                    disabledDate(time) {
+                        return time.getTime() > Date.now()
+                    }
+                },
+                productos: [{
+                    value: 'Tecnologia',
+                    label: 'Tecnologia',
+                    children: [{
+                        value: 'Computadoras',
+                        label: 'Computadoras',
+                    }, {
+                        value: 'Servidores',
+                        label: 'Servidores',
+                    }, {
+                        value: 'Redes',
+                        label: 'Redes'
+                    }]
+                }, {
+                    value: 'Medicina',
+                    label: 'Medicina',
+                    children: [{
+                        value: 'Batas',
+                        label: 'Batas'
+                    }, {
+                        value: 'Estetoscopio',
+                        label: 'Estetoscopio'
+                    }]
+                }]
+            }
+        },
+        computed: {
+            validar: function() {
+                return this.nombreCli && this.apellidoCli && this.value &&
+                    this.sexoCli && this.direccionCli != ''
+            },
+            validarPro: function() {
+                return this.nombrePro && this.capitalPro &&
+                    this.ubicacionPro && this.producPro != ' '
+            }
+        }
+
+    })
+</script>
+
+</html>

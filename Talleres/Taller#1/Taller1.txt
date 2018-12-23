@@ -1,0 +1,4 @@
+* Realizar el analisis de la UI.
+* Analizar que tipo de dato utiliza cada propiedades.
+* Seleccionar de la libreria el componente que mas se adapte a la propiedades.
+* Agregarlo al archivo.

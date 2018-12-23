@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <title>#2</title>
+</head>
+<div id="app">
+    <form>
+        <input type="number" v-model.number="numero1" placeholder="#1">
+        <select v-model="operador">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+        </select>
+        <input type="number" v-model.number="numero2" placeholder="#2">
+        <button @click.prevent="result" type="submit">Resultado</button>
+        <!-- al igual que el event.preventDefault(); , agregando .prevent al @click hace la misma funcion-->
+    </form>
+    <span>{{numero1}} {{operador}} {{numero2}} = {{resultado}}</span>
+    <pre>
+        {{$data}}
+    </pre>
+</div>
+
+<body>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            numero1: null,
+            numero2: null,
+            resultado: null,
+            operador: ''
+        },
+        methods: {
+            result: function(event) {
+                //event.preventDefault(); - nos ayuda a evitar que la pagina se refresque cuando hacemos una operacion
+                //event.preventDefault();
+                switch (this.operador) {
+                    case '+':
+                        this.resultado = this.numero1 + this.numero2
+                        break;
+                    case '-':
+                        this.resultado = this.numero1 - this.numero2
+                        break;
+                    case '*':
+                        this.resultado = this.numero1 * this.numero2
+                        break;
+                    case '/':
+                        this.resultado = this.numero1 / this.numero2
+                        break
+                }
+            }
+        }
+    })
+</script>
+
+</html>

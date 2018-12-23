@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <el-header>
+            <h1>Taller#2</h1>
+        </el-header>
+        <el-main>
+            <el-row>
+                <el-col :span="8">
+                    <h3>Cuenta</h3>
+                    <el-input placeholder="Cuenta" v-model="cuenta" type="number"></el-input>
+                    <h3>Nombre</h3>
+                    <el-input placeholder="Nombre" v-model="nombre"></el-input>
+                    <h3>Estado</h3>
+                    <el-checkbox v-model="checked" size="small"></el-checkbox>
+                    <h3>Monto</h3>
+                    <el-input placeholder="Monto" v-model="monto" type="number"></el-input>
+                    <br>
+                    <br>
+                    <el-button type="success" @click="guardar" v-if="validar">Aceptar</el-button>
+                </el-col>
+                <el-col :span="8">
+                    <div class="grid-content bg-purple">
+                        <p> </p>
+                    </div>
+                </el-col>
+                <el-col :span="8">
+                    <el-table :data="tableData" style="width: 100%">
+                        <el-table-column prop="cuenta" label="Cuenta">
+                        </el-table-column>
+                        <el-table-column prop="nombre" label="Nombre">
+                        </el-table-column>
+                        <el-table-column prop="monto" label="Monto">
+                        </el-table-column>
+                        <el-table-column prop="check" label="Estado">
+                        </el-table-column>
+                    </el-table>
+            </el-row>
+        </el-main>
+    </div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                cuenta: '',
+                nombre: '',
+                monto: '',
+                checked: '',
+                tableData: [{
+                    cuenta: '',
+                    nombre: '',
+                    monto: '',
+                    check: ''
+                }]
+            }
+        },
+        methods: {
+            guardar: function() {
+                this.tableData.push({
+                    cuenta: this.cuenta,
+                    nombre: this.nombre,
+                    monto: this.monto,
+                    check: this.checked ? "Activo" : "Inactivo"
+                })
+            }
+        },
+        computed: {
+            validar: function() {
+                return this.cuenta && this.nombre && this.monto > 0
+            }
+        }
+    })
+</script>
+
+</html>
