@@ -10,8 +10,7 @@
             </nb-button>
             <nb-input v-model="query" placeholder="Buscar por nombre..." />
             <nb-button
-              transparent
-              :onPress="GoBtnPress">
+              transparent :onPress="GoBtnPress">
               <nb-icon name="bulb"/>
             </nb-button>
           </nb-item>
